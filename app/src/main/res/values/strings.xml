@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Detox Inspector</string>
+    <string name="testcontentdescription">TestContentDescription</string>
+    <string name="second_activity">Second Activity</string>
+    <string name="first_activity">First Activity</string>
+    <string name="navigate_to_second_activity">Navigate to Second Activity</string>
+</resources>

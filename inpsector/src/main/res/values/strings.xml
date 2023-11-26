@@ -1,0 +1,4 @@
+<resources>
+    <string name="detox_inspector">Detox Inspector</string>
+    <string name="title_activity_inspector">InspectorActivity</string>
+</resources>
