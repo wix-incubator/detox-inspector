@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+
+        <activity
+            android:name="com.wix.detox.inspector.features.inspect.InspectActivity"
+            android:exported="false"
+            android:label="@string/title_activity_inspector"
+            android:theme="@style/Theme.Transparent"
+            android:launchMode="singleInstance"
+            />
+
+        <provider
+            android:name="com.wix.detox.inspector.provider.InitContentProvider"
+            android:authorities="${applicationId}.provider"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name="com.wix.detox.inspector.service.InspectorTileService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/highlight_alt_black_24dp"
+            android:label="@string/detox_inspector"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

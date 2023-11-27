@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Detox Inspector"
 include(":app")
-include(":inpsector")
+include(":inspector")

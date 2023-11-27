@@ -3,7 +3,7 @@ package com.wix.detox.layoutinspectorapp.activity
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.activity.ComponentActivity
-import com.wix.detox.inpsector.Inspector
+import com.wix.detox.inspector.Inspector
 import com.wix.detox.layoutinspectorapp.R
 import timber.log.Timber
 
