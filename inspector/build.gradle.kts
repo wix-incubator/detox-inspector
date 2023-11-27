@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("maven-publish")
+    id("com.gladed.androidgitversion")
 }
 
 android {
@@ -10,7 +11,6 @@ android {
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -54,7 +54,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.wix.detox"
                 artifactId = "inspector"
-                version = "0.0.1"
+                version = androidGitVersion.name()
 
                 afterEvaluate {
                     from(components["release"])

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.gladed.androidgitversion")
 }
 
 android {
@@ -10,9 +11,8 @@ android {
     defaultConfig {
         applicationId = "com.wix.detox.layoutinspectorapp"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = androidGitVersion.code()
+        versionName = androidGitVersion.name()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
