@@ -26,7 +26,7 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
             it.toViewNode()
         }.stateIn(
             scope = scope,
-            started = SharingStarted.Eagerly,
+            started = SharingStarted.WhileSubscribed(),
             initialValue = null
         )
 
@@ -45,10 +45,7 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
             return null
         }
 
-        val contentView = rootView.findViewById<ViewGroup>(android.R.id.content)
-        val appContentView = contentView.getChildAt(0) as? ViewGroup
-
-        return appContentView?.toViewNode(null)
+        return rootView.toViewNode(null)
     }
 
 
@@ -85,6 +82,7 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
         return ViewNode(
             id = id,
             tag = tagToString(this.tag),
+            label = this.contentDescription?.let { tagToString(it) } ?: "",
             className = this::class.java.simpleName,
             width = this.width / density,
             height = this.height / density,

@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.StateFlow
 data class ViewNode(
     val id: String,
     val tag: String,
+    val label: String,
     val width: Float,
     val height: Float,
     val x: Float,
