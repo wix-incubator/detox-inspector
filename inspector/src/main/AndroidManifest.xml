@@ -5,7 +5,7 @@
 
         <activity
             android:name="com.wix.detox.inspector.features.inspect.InspectActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_inspector"
             android:theme="@style/Theme.Transparent"
             android:launchMode="singleInstance"
