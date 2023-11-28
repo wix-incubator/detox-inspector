@@ -15,7 +15,7 @@
             android:name="com.wix.detox.inspector.provider.InitContentProvider"
             android:authorities="${applicationId}.provider"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
 
         <service
             android:name="com.wix.detox.inspector.service.InspectorTileService"

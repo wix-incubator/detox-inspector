@@ -6,7 +6,6 @@ import android.database.Cursor
 import android.net.Uri
 import androidx.core.content.ContentProviderCompat
 import com.wix.detox.inspector.Inspector
-import timber.log.Timber
 
 class InitContentProvider : ContentProvider() {
 

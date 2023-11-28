@@ -11,6 +11,8 @@ android {
     defaultConfig {
         applicationId = "com.wix.detox.layoutinspectorapp"
         minSdk = 24
+        targetSdk = 34
+
         versionCode = androidGitVersion.code()
         versionName = androidGitVersion.name()
 

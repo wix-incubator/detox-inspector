@@ -20,8 +20,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -66,7 +64,6 @@ fun InspectScreen(viewModel: InspectViewModel) {
         }
     } else {
         EmptyInspectScreen()
-
     }
 }
 
@@ -86,7 +83,6 @@ private fun Dialog(selectedNode: ViewNode, onDismiss: () -> Unit, onParentClick:
                     .fillMaxWidth()
                     .padding(24.dp)
             ) {
-
                 Text(
                     modifier = Modifier.align(CenterHorizontally),
                     text = selectedNode.className,
@@ -97,24 +93,12 @@ private fun Dialog(selectedNode: ViewNode, onDismiss: () -> Unit, onParentClick:
                     Row {
                         Text(
                             modifier = Modifier.alignByBaseline(),
-                            text = "Id: ",
+                            text = "TestID: ",
                             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
                         )
                         Text(
                             modifier = Modifier.alignByBaseline(),
-                            text = "${selectedNode.id}",
-                            style = MaterialTheme.typography.bodyMedium
-                        )
-                    }
-                    Row {
-                        Text(
-                            modifier = Modifier.alignByBaseline(),
-                            text = "Tag: ",
-                            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
-                        )
-                        Text(
-                            modifier = Modifier.alignByBaseline(),
-                            text = "${selectedNode.tag}",
+                            text = selectedNode.tag,
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
@@ -126,7 +110,19 @@ private fun Dialog(selectedNode: ViewNode, onDismiss: () -> Unit, onParentClick:
                         )
                         Text(
                             modifier = Modifier.alignByBaseline(),
-                            text = "${selectedNode.label}",
+                            text = selectedNode.label,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                    }
+                    Row {
+                        Text(
+                            modifier = Modifier.alignByBaseline(),
+                            text = "Android ID: ",
+                            style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
+                        )
+                        Text(
+                            modifier = Modifier.alignByBaseline(),
+                            text = selectedNode.id,
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
@@ -154,7 +150,6 @@ private fun EmptyInspectScreen() {
             .background(color = Color.Transparent)
 
     ) {
-        Text(text = "View not found")
     }
 }
 

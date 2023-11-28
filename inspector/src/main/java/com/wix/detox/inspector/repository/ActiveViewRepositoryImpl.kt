@@ -74,15 +74,15 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
         val location = getAbsolutePosition(this)
 
         val id = if (this.id != View.NO_ID) {
-            resources.getResourceEntryName(this.id);
+            resources.getResourceEntryName(this.id)
         } else {
-            ""
+            NA
         }
 
         return ViewNode(
             id = id,
             tag = tagToString(this.tag),
-            label = this.contentDescription?.let { tagToString(it) } ?: "",
+            label = this.contentDescription?.let { tagToString(it) } ?: NA,
             className = this::class.java.simpleName,
             width = this.width / density,
             height = this.height / density,
@@ -103,8 +103,7 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
             if (child is ViewGroup) {
                 val node = child.toViewNode(result)
                 node?.let { viewNodesChildren.add(it) }
-
-            } else if (child is View) {
+            } else {
                 val node = child.toViewNode(result, emptyList())
                 node?.let { viewNodesChildren.add(it) }
             }
@@ -115,9 +114,11 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
 
     private fun tagToString(tag: Any?): String {
         return when (tag) {
-            null -> ""
+            null -> NA
             is String -> tag
             else -> tag.toString()
         }
     }
 }
+
+private const val NA = "N/A"

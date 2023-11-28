@@ -1,10 +1,8 @@
 package com.wix.detox.layoutinspectorapp.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
+import androidx.appcompat.app.AppCompatActivity
 import com.wix.detox.layoutinspectorapp.R
-import timber.log.Timber
 
 class FirstTestActivity : AppCompatActivity() {
 

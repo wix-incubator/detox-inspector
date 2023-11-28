@@ -21,7 +21,9 @@ class InspectActivity : ComponentActivity() {
             Timber.i("About to start InspectorActivity")
             val intent = Intent(context, InspectActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             context.startActivity(intent)
+
         }
     }
 
