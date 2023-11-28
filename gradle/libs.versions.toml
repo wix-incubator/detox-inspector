@@ -1,0 +1,40 @@
+[versions]
+compileSdkVersion = "33"
+minSdkVersion = "24"
+androidxCore = "1.8.0"
+kotlinxCoroutines = "1.7.1"
+androidxAppCompat = "1.5.1"
+androidGradlePlugin = "8.1.4"
+androidxActivity = "1.7.0"
+androidxComposeBom = "2023.03.00"
+timber = "5.0.1"
+junit4 = "4.13.2"
+lifeCycle = "2.6.2"
+kotlinCompilerExtVersion = "1.5.4"
+googleMaterial = "1.9.0"
+constraintLayout = "2.1.4"
+
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
+androidx-lifeCycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifeCycle" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterial" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintLayout" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version = "1.1.5" }
+androidx-monitor = { group = "androidx.test", name = "monitor", version = "1.6.1" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
