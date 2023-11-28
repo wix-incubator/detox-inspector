@@ -11,6 +11,12 @@
 		}
 	}
 ```
+2. Add the following dependency to your app/build.gradle
+```groovy
+	dependencies {
+		implementation 'com.github.wix-incubator:detox-inspector:Tag'
+	}
+```
 
 ## How to invoke the inspector
 You have two options to invoke the inspector:
