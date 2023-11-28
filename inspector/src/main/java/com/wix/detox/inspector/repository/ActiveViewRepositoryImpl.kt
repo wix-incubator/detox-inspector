@@ -74,7 +74,12 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
         val location = getAbsolutePosition(this)
 
         val id = if (this.id != View.NO_ID) {
-            resources.getResourceEntryName(this.id)
+            try {
+                resources.getResourceEntryName(this.id)
+            } catch (e: Exception) {
+                Timber.w(e, "Failed to get resource name for id: ${this.id}")
+                NA
+            }
         } else {
             NA
         }
