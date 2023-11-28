@@ -1,4 +1,5 @@
 [![](https://jitpack.io/v/wix-incubator/detox-inspector.svg)](https://jitpack.io/#wix-incubator/detox-inspector)
+[![Detox is released under the MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ## How to integrate the inspector
 1. Make sure you have jitpack repository installed. Add the following to your root build.gradle file at the end of repositories:
