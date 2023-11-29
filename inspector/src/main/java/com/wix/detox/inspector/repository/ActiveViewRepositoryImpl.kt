@@ -17,7 +17,7 @@ data class BlackListItem(val id: String? = null, val className: String)
 
 class ActiveViewRepositoryImpl : ActiveViewRepository {
 
-    private val blackList = listOf(BlackListItem(className = "TextView"))
+    private val blackList = listOf(BlackListItem(className = "TraceUpdateOverlay"))
 
     private val scope = CoroutineScope(Dispatchers.Main)
 
