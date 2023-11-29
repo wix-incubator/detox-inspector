@@ -13,7 +13,11 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import timber.log.Timber
 
+data class BlackListItem(val id: String? = null, val className: String)
+
 class ActiveViewRepositoryImpl : ActiveViewRepository {
+
+    private val blackList = listOf(BlackListItem(className = "TraceUpdateOverlay"))
 
     private val scope = CoroutineScope(Dispatchers.Main)
 
@@ -64,25 +68,38 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
         return intArrayOf(x, absoluteY)
     }
 
+    private fun BlackListItem.matchesView(view: View): Boolean {
+        val className = this::class.java.simpleName
+
+        id?.let {
+            if (it == view.getResourceName()) {
+                return false
+            }
+        }
+
+        if (view.javaClass.simpleName != className) {
+            return false
+        }
+
+        return true
+    }
+
+    private fun isInBlackList(view: View): Boolean {
+        return blackList.any { it.matchesView(view) }
+    }
 
     private fun View.toViewNode(parent: ViewNode?, children: List<ViewNode>): ViewNode? {
         if (visibility != View.VISIBLE) {
             return null
         }
 
+        if (isInBlackList(this)) {
+            return null
+        }
+
         val density = this.context.resources.displayMetrics.density
         val location = getAbsolutePosition(this)
-
-        val id = if (this.id != View.NO_ID) {
-            try {
-                resources.getResourceEntryName(this.id)
-            } catch (e: Exception) {
-                Timber.w(e, "Failed to get resource name for id: ${this.id}")
-                NA
-            }
-        } else {
-            NA
-        }
+        val id = getResourceName()
 
         return ViewNode(
             id = id,
@@ -96,6 +113,20 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
             parent = parent,
             children = children
         )
+    }
+
+    private fun View.getResourceName(): String {
+        val id = if (this.id != View.NO_ID) {
+            try {
+                resources.getResourceEntryName(this.id)
+            } catch (e: Exception) {
+                Timber.w(e, "Failed to get resource name for id: ${this.id}")
+                NA
+            }
+        } else {
+            NA
+        }
+        return id
     }
 
     private fun ViewGroup.toViewNode(parent: ViewNode?): ViewNode? {
