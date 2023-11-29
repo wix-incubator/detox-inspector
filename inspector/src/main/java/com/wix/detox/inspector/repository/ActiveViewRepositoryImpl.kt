@@ -17,7 +17,7 @@ data class BlackListItem(val id: String? = null, val className: String)
 
 class ActiveViewRepositoryImpl : ActiveViewRepository {
 
-    private val blackList = listOf(BlackListItem(className = "TraceUpdateOverlay"))
+    private val blackList = listOf(BlackListItem(className = "TextView"))
 
     private val scope = CoroutineScope(Dispatchers.Main)
 
@@ -69,7 +69,7 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
     }
 
     private fun BlackListItem.matchesView(view: View): Boolean {
-        val className = this::class.java.simpleName
+        val className = view::class.java.simpleName
 
         id?.let {
             if (it == view.getResourceName()) {
@@ -77,7 +77,7 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
             }
         }
 
-        if (view.javaClass.simpleName != className) {
+        if (this.className != className) {
             return false
         }
 
