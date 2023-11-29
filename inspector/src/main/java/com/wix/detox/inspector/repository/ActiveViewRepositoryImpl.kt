@@ -13,11 +13,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import timber.log.Timber
 
-data class BlackListItem(val id: String? = null, val className: String)
 
 class ActiveViewRepositoryImpl : ActiveViewRepository {
-
-    private val blackList = listOf(BlackListItem(className = "TraceUpdateOverlay"))
 
     private val scope = CoroutineScope(Dispatchers.Main)
 
@@ -68,24 +65,29 @@ class ActiveViewRepositoryImpl : ActiveViewRepository {
         return intArrayOf(x, absoluteY)
     }
 
-    private fun BlackListItem.matchesView(view: View): Boolean {
+    /**
+     * Custom logic to filter out views that are not relevant to the user.
+     */
+    private fun isInBlackList(view: View): Boolean {
+        return isTraceUpdateOverlayBranch(view)
+    }
+
+    /**
+     * Filter out the TraceUpdateOverlay ui branch.
+     */
+    private fun isTraceUpdateOverlayBranch(view: View): Boolean {
         val className = view::class.java.simpleName
 
-        id?.let {
-            if (it == view.getResourceName()) {
-                return false
+        if (className == "ReactViewGroup") {
+            if (view is ViewGroup) {
+                if (view.children.filter { it::class.java.simpleName == "TraceUpdateOverlay" }
+                        .count() > 0) {
+                    return true
+                }
             }
         }
 
-        if (this.className != className) {
-            return false
-        }
-
-        return true
-    }
-
-    private fun isInBlackList(view: View): Boolean {
-        return blackList.any { it.matchesView(view) }
+        return false
     }
 
     private fun View.toViewNode(parent: ViewNode?, children: List<ViewNode>): ViewNode? {
